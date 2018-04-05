@@ -34,20 +34,21 @@ class MyStreamer(TwythonStreamer):
     def on_success(self, data):
         if 'text' in data:
             print(data['text'])
-            sendURL(data['text'].replace('Hey raapberry ', ''))
+##            sendURL(data['text'].replace('Hey raspberry ', ''))
+            print(type(data['text']))
 
 def main():
     print('input')
     global Url
     Url = input()
-    stream = MyStreamer(
-        consumer_key,
-        consumer_secret,
-        access_token,
-        access_token_secret
-    )
-    print('finding')
-    stream.statuses.filter(track='Hey raapberry ')
+##    stream = MyStreamer(
+##        consumer_key,
+##        consumer_secret,
+##        access_token,
+##        access_token_secret
+##    )
+##    print('finding')
+##    stream.statuses.filter(track='Hey raspberry ')
 
 
 main()
