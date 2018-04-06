@@ -18,7 +18,9 @@ def sendURL(s):
         state = '1'
         s = s.replace('on', '')
     try:
-        r = requests.get('http://'+Url+'/'+state+'/'+s)
+##        r = requests.get('http://'+Url+'/'+state+'/'+s)
+        print('http://'+Url+'/'+state+'/'+s);
+        r = requests.get('http://google.com')
         if r.status_code == requests.code.ok:
             print('\nMessage sent sucessfully!!\n')
             print('Message:')
@@ -34,21 +36,21 @@ class MyStreamer(TwythonStreamer):
     def on_success(self, data):
         if 'text' in data:
             print(data['text'])
-##            sendURL(data['text'].replace('Hey raspberry ', ''))
+            sendURL(data['text'].replace('Hey raspberry ', ''))
             print(type(data['text']))
 
 def main():
     print('input')
     global Url
     Url = input()
-##    stream = MyStreamer(
-##        consumer_key,
-##        consumer_secret,
-##        access_token,
-##        access_token_secret
-##    )
-##    print('finding')
-##    stream.statuses.filter(track='Hey raspberry ')
+    stream = MyStreamer(
+        consumer_key,
+        consumer_secret,
+        access_token,
+        access_token_secret
+    )
+    print('finding')
+    stream.statuses.filter(track='Hey raspberry ')
 
 
 main()
